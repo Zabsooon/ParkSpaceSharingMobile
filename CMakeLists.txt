@@ -7,8 +7,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
-qt_add_executable(appParkSpaceSharingMobile
+set(PROJECT_SOURCES
     src/main.cpp
+    src/login.cpp
+)
+
+set(PROJECT_HEADERS
+    include/login.h
+)
+
+qt_add_executable(appParkSpaceSharingMobile
+    ${PROJECT_SOURCES}
+    ${PROJECT_HEADERS}
 )
 
 qt_add_qml_module(appParkSpaceSharingMobile

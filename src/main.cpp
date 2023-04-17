@@ -1,9 +1,12 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "include/login.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    qmlRegisterType<LoginClass>("com.example", 1, 0, "LoginClass");
 
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/ParkSpaceSharingMobile/main.qml"_qs);
