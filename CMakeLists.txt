@@ -10,10 +10,12 @@ find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 set(PROJECT_SOURCES
     src/main.cpp
     src/login.cpp
+    src/register.cpp
 )
 
 set(PROJECT_HEADERS
     include/login.h
+    include/register.h
 )
 
 qt_add_executable(appParkSpaceSharingMobile
@@ -24,7 +26,7 @@ qt_add_executable(appParkSpaceSharingMobile
 qt_add_qml_module(appParkSpaceSharingMobile
     URI ParkSpaceSharingMobile
     VERSION 1.0
-    QML_FILES main.qml 
+    QML_FILES main.qml login.qml register.qml
 )
 
 set_target_properties(appParkSpaceSharingMobile PROPERTIES
