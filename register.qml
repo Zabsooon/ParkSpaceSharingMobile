@@ -2,12 +2,11 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import com.example.register 1.0
 
-Window {
+Rectangle {
     id: registerWindow
     width: 640
     height: 480
     visible: true
-    title: qsTr("Register form")
     color: "#333333"
 
     // Username input field
@@ -220,6 +219,7 @@ Window {
     Button {
         id: registerButton
         width: 300
+        height: 70
         anchors.top: passwordField.bottom
         anchors.horizontalCenter: passwordField.horizontalCenter
         text: "Register"

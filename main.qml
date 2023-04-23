@@ -1,35 +1,33 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.3
 
-Window {
+ApplicationWindow {
     id: mainWindow
     visible: true
     width: 640
     height: 480
     title: "Welcome menu"
 
-    property int currentPage: -1
-
-    Row {
-        spacing: 10
-
-        Button {
+    header: TabBar {
+        id: topBar
+        TabButton {
             text: "Login"
-            onClicked: currentPage = 0
+            onClicked: {
+                pageLoader.source = "login.qml"
+            }
         }
-
-        Button {
+        TabButton {
             text: "Register"
-            onClicked: currentPage = 1
+            onClicked: {
+                pageLoader.source = "register.qml"
+            }
         }
     }
 
     Loader {
         id: pageLoader
         anchors.fill: parent
-        source: currentPage == 0 ? "login.qml" : "register.qml"
-        Component.onCompleted: {
-            currentPage = -1
-        }
+        source: "login.qml"
     }
 }

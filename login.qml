@@ -2,37 +2,39 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import com.example.login 1.0
 
-Window {
+Rectangle {
     id: loginWindow
     width: 640
     height: 480
     visible: true
-    title: qsTr("Login Form")
     color: "#333333"
 
-    // Email input field
     TextField {
         id: emailField
         width: 300
-        anchors.centerIn: parent
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.topMargin: 50
         placeholderText: "Email"
+
         font.family: "Arial"
         font.pixelSize: 16
         padding: 10
+
         background: Rectangle {
             border.width: 1
-            border.color: "#bcbcbc"
+            border.color: "#262525"
             color: "#ffffff"
             radius: 5
 
             gradient: Gradient {
                 GradientStop {
                     position: 0.0
-                    color: "steelblue"
+                    color: "#0569b5"
                 }
                 GradientStop {
                     position: 1.0
-                    color: "deepskyblue"
+                    color: "#0b1924"
                 }
             }
         }
@@ -59,7 +61,7 @@ Window {
                 when: !emailField.activeFocus
                 PropertyChanges {
                     target: emailField
-                    opacity: 0.3
+                    opacity: 0.7
                 }
             }
         ]
@@ -91,18 +93,18 @@ Window {
 
         background: Rectangle {
             border.width: 1
-            border.color: "#bcbcbc"
+            border.color: "#262525"
             color: "#ffffff"
             radius: 5
 
             gradient: Gradient {
                 GradientStop {
                     position: 0.0
-                    color: "steelblue"
+                    color: "#0569b5"
                 }
                 GradientStop {
                     position: 1.0
-                    color: "deepskyblue"
+                    color: "#0b1924"
                 }
             }
         }
@@ -129,7 +131,7 @@ Window {
                 when: !passwordField.activeFocus
                 PropertyChanges {
                     target: passwordField
-                    opacity: 0.3
+                    opacity: 0.7
                 }
             }
         ]
@@ -158,31 +160,13 @@ Window {
         font.bold: true
 
         background: Rectangle {
-            id: gradientRectangle
-            color: loginButton.pressed ? "#7f8c8d" : "#bdc3c7"
-            opacity: loginButton.pressed ? 0.8 : 1.0
+            id: loginButtonRectangle
+            color: loginButton.pressed ? "#ffffff" : "#232323"
             border.width: 1
-            border.color: "#333333"
-
-            gradient: Gradient {
-                GradientStop { position: 0; color: "#f1c40f"}
-                GradientStop { position: 1; color: "#e67e22"}
-            }
+            border.color: "#bbbbbb"
             radius: 6
         }
-
         hoverEnabled: true
-        onPressedChanged: {
-            gradientRectangle.color = loginButton.pressed ? "#7f8c8d" : "#bdc3c7";
-            gradientRectangle.opacity = loginButton.pressed ? 0.8 : 1.0;
-        }
-
-        transitions: Transition {
-            NumberAnimation {
-                properties: "opacity, color"
-                duration: 100
-            }
-        }
 
         onClicked: loginClass.login(emailField.text, passwordField.text)
     }
